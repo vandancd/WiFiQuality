@@ -29,4 +29,4 @@ cat << EOF > WiFiQuality.app/Contents/Info.plist
 </dict>
 </plist>
 EOF
-echo -e "`date`: App build successfully."
+echo -e "`date`: App build successfully." 
