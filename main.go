@@ -22,7 +22,7 @@ func onReady() {
 	go func() {
 		w := util.NewWireless()
 		for {
-			systray.SetTitle("👌🏽" + strconv.Itoa(w.Quality))
+			systray.SetTitle("👌🏽 Quality: " + strconv.Itoa(w.Quality))
 			systray.SetTooltip("Strength: " + strconv.Itoa(w.Strength) + " | Noise: " + strconv.Itoa(w.Noise))
 			time.Sleep(15 * time.Second)
 		}
