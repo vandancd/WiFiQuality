@@ -39,3 +39,7 @@ The `Makefile build` has two options:
 You can run `make build` to create these two items.
 
 The `Makefile run` builds the `macOS` app. It uses [mholt/macapp](https://gist.github.com/mholt/11008646c95d787c30806d3f24b2c844) that allows me to build a macOS application.
+
+## Icon for WiFiQuality 
+Right now it uses the 👌🏽 emoji. 
+TODO: Use an Icon Data file to generate a relevant icon to show up in the system tray. 
