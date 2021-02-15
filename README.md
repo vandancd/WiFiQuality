@@ -43,3 +43,4 @@ The `Makefile run` builds the `macOS` app. It uses [mholt/macapp](https://gist.g
 ## Icon for WiFiQuality 
 Right now it uses the 👌🏽 emoji. 
 TODO: Use an Icon Data file to generate a relevant icon to show up in the system tray. 
+
