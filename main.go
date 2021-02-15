@@ -16,9 +16,7 @@ func main() {
 }
 
 func onReady() {
-	//systray.SetIcon(getAppIcon("assets/wifiquality.ico"))
 	//systray.SetIcon(getAppIcon("assets/icon.icns"))
-
 	go func() {
 		w := util.NewWireless()
 		for {
