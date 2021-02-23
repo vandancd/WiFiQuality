@@ -1,7 +1,7 @@
 package util
 
 import (
-	"fmt"
+	"log"
 	"os/exec"
 	"regexp"
 	"strconv"
@@ -28,7 +28,8 @@ func NewWireless() *Wireless {
 	out, err := exec.Command(osxCmd, osxArgs).Output()
 	if err != nil {
 		//return nil, err
-		fmt.Println(err)
+		log.Println(err)
+		//fmt.Println(err)
 	}
 
 	// TODO: Figure out  better way to get this RegEx wokring in the for loop
@@ -68,10 +69,4 @@ func NewWireless() *Wireless {
 	}
 	w.Quality = w.Strength - w.Noise
 	return w
-}
-
-func panicIf(err error) {
-	if err != nil {
-		panic(err)
-	}
 }
