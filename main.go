@@ -3,15 +3,24 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"log"
 	"strconv"
 	"time"
 
 	"github.com/getlantern/systray"
 
 	"github.com/vandancd/wifiquality/util"
+	"gopkg.in/natefinch/lumberjack.v2"
 )
 
 func main() {
+	log.SetOutput(&lumberjack.Logger{
+		Filename:   "/tmp/wifiquality.log",
+		MaxSize:    10, // megabytes
+		MaxBackups: 3,
+		MaxAge:     28,   //days
+		Compress:   true, // disabled by default
+	})
 	systray.Run(onReady, onExit)
 }
 
@@ -36,7 +45,8 @@ func onReady() {
 			systray.SetTooltip("Strength: " + strconv.Itoa(w.Strength) + " | Noise: " + strconv.Itoa(w.Noise))
 			mStrength.SetTitle("Strength: " + strconv.Itoa(w.Strength) + " dBm")
 			mNoise.SetTitle("Noise: " + strconv.Itoa(w.Noise) + " dBm")
-			time.Sleep(15 * time.Second)
+			log.Printf("Network: %s; SNR: %v; Strength: %v; Noise:%v", w.NetworkName, w.Quality, w.Strength, w.Noise)
+			time.Sleep(60 * time.Second)
 		}
 	}()
 	mQuit := systray.AddMenuItem("Quit", "Quit WiFi Quality")
