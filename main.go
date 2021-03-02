@@ -41,7 +41,14 @@ func onReady() {
 	go func() {
 		for {
 			w := util.NewWireless()
-			systray.SetTitle("SNR: " + strconv.Itoa(w.Quality))
+			systray.SetTitle("SNR: " + strconv.Itoa(w.Quality) + " dB")
+			if w.Quality >= 40 {
+				systray.SetIcon(util.WiFiGreen)
+			} else if w.Quality <= 15 {
+				systray.SetIcon(util.WiFiRed)
+			} else {
+				systray.SetIcon(util.WiFiOrange)
+			}
 			systray.SetTooltip("Strength: " + strconv.Itoa(w.Strength) + " | Noise: " + strconv.Itoa(w.Noise))
 			mStrength.SetTitle("Strength: " + strconv.Itoa(w.Strength) + " dBm")
 			mNoise.SetTitle("Noise: " + strconv.Itoa(w.Noise) + " dBm")
