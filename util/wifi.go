@@ -15,7 +15,8 @@ const (
 
 //Wireless Object on macOS
 type Wireless struct {
-	NetworkName string `json:"networkName"`
+	NetworkName string `json:"networkname"`
+	BSSID       string `json:"bssid"`
 	Strength    int    `json:"strength"`
 	Noise       int    `json:"noise"`
 	Quality     int    `json:"quality"`
@@ -37,6 +38,11 @@ func NewWireless() *Wireless {
 	tmpName := regName.FindAllStringSubmatch(string(out), -1)
 	if len(tmpName) > 1 {
 		w.NetworkName = tmpName[1][1]
+	}
+	regBSSID := regexp.MustCompile(`s*BSSID: (.+)s*`)
+	tmpBssid := regBSSID.FindAllStringSubmatch(string(out), -1)
+	if len(tmpBssid) > 0 {
+		w.BSSID = tmpBssid[0][1]
 	}
 
 	wifiData := strings.Split(string(out), "\n")
