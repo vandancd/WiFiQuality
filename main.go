@@ -45,7 +45,7 @@ func onReady() {
 			systray.SetTooltip("Strength: " + strconv.Itoa(w.Strength) + " | Noise: " + strconv.Itoa(w.Noise))
 			mStrength.SetTitle("Strength: " + strconv.Itoa(w.Strength) + " dBm")
 			mNoise.SetTitle("Noise: " + strconv.Itoa(w.Noise) + " dBm")
-			log.Printf("Network: %s; SNR: %v; Strength: %v; Noise:%v", w.NetworkName, w.Quality, w.Strength, w.Noise)
+			log.Printf("Network: %s; BSSID: %s; SNR: %v; Strength: %v; Noise:%v", w.NetworkName, w.BSSID, w.Quality, w.Strength, w.Noise)
 			time.Sleep(60 * time.Second)
 		}
 	}()
